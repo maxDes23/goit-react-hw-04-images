@@ -13,19 +13,12 @@ const Modal = ({ largeImageURL, onClose }) => {
     }
   };
 
-useEffect(() => {
-  const handleKeyDown = event => {
-    if (event.code === 'Escape') {
-      onClose();
-    }
-  };
-
-  window.addEventListener('keydown', handleKeyDown);
-
-  return () => {
-    window.removeEventListener('keydown', handleKeyDown);
-  };
-}, [onClose]);
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   return (
     <div className="Overlay" onClick={handleClose}>
